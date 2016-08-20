@@ -1,9 +1,10 @@
 package modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Venda {
+public class Venda implements Serializable{
 	int id;
 	Date data;
 	int itens;

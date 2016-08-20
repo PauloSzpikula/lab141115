@@ -1,8 +1,9 @@
 package modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Entrega {
+public class Entrega implements Serializable {
 
 	int id;
 	Date data_inicio;

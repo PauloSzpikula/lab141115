@@ -3,13 +3,31 @@ package servlets;
 import javax.annotation.Resource;
 import javax.jms.Queue;
 import javax.jms.Topic;
+import javax.servlet.http.HttpServlet;
 
-public class ServletConfig {
+//@JMSDestinationDefinitions(
+//
+//		// definiçao de destino do jms
+//	value = {
+//        @JMSDestinationDefinition(
+//            name = "java:/queue/pedido",
+//            interfaceName = "javax.jms.Queue",
+//            destinationName = "pedido"
+//        ),
+//        @JMSDestinationDefinition(
+//            name = "java:/topic/venda",
+//            interfaceName = "javax.jms.Topic",
+//            destinationName = "venda"
+//        )
+//    })
 
-	@Resource
-    private Queue queuePedido;
 
-    @Resource
-    private Topic topicVenda;
+public class ServletConfig extends HttpServlet  {
+
+//    @Resource(lookup = "java:/queue/pedido")
+//    private Queue queue;
+//
+//    @Resource(lookup = "java:/topic/venda")
+//    private Topic topic;
 
 }

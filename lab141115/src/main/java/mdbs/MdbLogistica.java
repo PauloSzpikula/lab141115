@@ -1,41 +1,40 @@
 package mdbs;
 
-import java.util.logging.Logger;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
-import javax.jms.TextMessage;
+import javax.jms.ObjectMessage;
+import modelos.Entrega;
 
 @MessageDriven(name = "MdbLogistica", activationConfig = {
-		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "queue/MdbLogistica"),
+		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "queue/pedido"),
 	    @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 	    @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge"),
 	    @ActivationConfigProperty(propertyName = "maxSession", propertyValue = "1")
 })
 public class MdbLogistica implements MessageListener {
 
-    private final static Logger LOGGER = Logger.getLogger(MdbLogistica.class.toString());
+	public void onMessage(Message mensagem) {
 
-    public void onMessage(Message rcvMessage) {
-        TextMessage msg = null;
-        try {
-            if (rcvMessage instanceof TextMessage) {
-                msg = (TextMessage) rcvMessage;
+		ObjectMessage obj_msg = (ObjectMessage) mensagem;
 
-                LOGGER.info("Recebi isso: " + msg.getText());
+		try {
+
+			if (mensagem instanceof ObjectMessage) {
+				System.out.println("MdbLogistica: iniciando a entrega ...");
+				Entrega entrega = (Entrega) obj_msg.getObject();
             	try {
 					Thread.sleep(30000);
+					System.out.println("MdbLogistica: nova entrega realizada: Id: " + String.valueOf(entrega.getId()));
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-                LOGGER.info("A entrega foi despachada!");
-            } else {
-                LOGGER.warning("Mensagem de erro: " + rcvMessage.getClass().getName());
-            }
-        } catch (JMSException e) {
-            throw new RuntimeException(e);
-        }
-    }
+			}
+
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+	}
 }

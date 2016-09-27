@@ -32,8 +32,8 @@ public class WebServiceVenda {
 	    venda.setValor(200.00);
 	    venda.setItens(itens.size());
 
-//	    ejb_process_venda.processarVenda(venda);
+	    ejb_process_venda.processarVenda(venda);
 
-	    return "Retorno positivo";
+	    return "Aguarde, pois a venda está sendo despachada!";
 	}
 }

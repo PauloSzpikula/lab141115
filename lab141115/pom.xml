@@ -4,16 +4,7 @@
   <artifactId>lab141115</artifactId>
   <version>1.0</version>
 
-    <url>http://wildfly.org</url>
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <distribution>repo</distribution>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-        </license>
-    </licenses>
-
-    <properties>
+      <properties>
         <!-- Explicitly declaring the source encoding eliminates the following
             message: -->
         <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered
@@ -78,12 +69,11 @@
             <artifactId>cdi-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-   			<groupId>org.hibernate</groupId>
-   			<artifactId>hibernate-core</artifactId>
-   			<version>5.1.0.Final</version>
-  		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.1.0.Final</version>
+		</dependency>
     </dependencies>
 
     <build>

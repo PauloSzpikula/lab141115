@@ -1,8 +1,5 @@
 package servlets;
 
-import javax.annotation.Resource;
-import javax.jms.Queue;
-import javax.jms.Topic;
 import javax.servlet.http.HttpServlet;
 
 //@JMSDestinationDefinitions(

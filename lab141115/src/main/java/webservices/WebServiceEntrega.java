@@ -26,8 +26,8 @@ public class WebServiceEntrega {
 		entrega.setData_inicio(new Date());
 		entrega.setData_entrega(new Date());
 
-//		ejb_process_entrega.processarEntrega(entrega);
+		ejb_process_entrega.processarEntrega(entrega);
 
-		return "Retorno positivo";
+		return "Aguarde, pois a entrega está sendo despachada!";
     }
 }
